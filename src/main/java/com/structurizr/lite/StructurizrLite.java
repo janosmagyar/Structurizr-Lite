@@ -46,6 +46,7 @@ public class StructurizrLite extends SpringBootServletInitializer {
 		}
 
 		Configuration.getInstance().setDataDirectory(structurizrDataDirectory);
+		System.setProperty("server.servlet.context-path", Configuration.getInstance().getContextPath());
 
 		SpringApplication.run(StructurizrLite.class, args);
 		start();
@@ -126,6 +127,7 @@ public class StructurizrLite extends SpringBootServletInitializer {
 		log.info("Workspace path: " + Configuration.getInstance().getDataDirectory().getAbsolutePath());
 		log.info("Workspace filename: " + Configuration.getInstance().getWorkspaceFilename() + "[.dsl|.json]");
 		log.info("URL: " + Configuration.getInstance().getWebUrl());
+		log.info("ContextPath: " + Configuration.getInstance().getContextPath());
 		log.info("Auto-save interval: " + Configuration.getInstance().getAutoSaveInterval() + "ms");
 		log.info("Auto-refresh interval: " + Configuration.getInstance().getAutoRefreshInterval() + "ms");
 

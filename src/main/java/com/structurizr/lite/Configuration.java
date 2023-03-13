@@ -21,6 +21,7 @@ public class Configuration {
 
     private static final String EDITABLE_PROPERTY = "structurizr.editable";
     private static final String URL_PROPERTY = "structurizr.url";
+    private static final String CONTEXT_PATH_PROPERTY = "structurizr.contextPath";
     private static final String AUTO_SAVE_INTERVAL_PROPERTY = "structurizr.autoSaveInterval";
     private static final String DEFAULT_AUTO_SAVE_INTERVAL_IN_MILLISECONDS = "5000";
     private static final String AUTO_REFRESH_INTERVAL_PROPERTY = "structurizr.autoRefreshInterval";
@@ -33,6 +34,8 @@ public class Configuration {
 
     private File dataDirectory;
     private String webUrl;
+    private String contextPath;
+
 
     private final String apiKey = new RandomGuidGenerator().generate();
     private final String apiSecret = new RandomGuidGenerator().generate();
@@ -68,6 +71,10 @@ public class Configuration {
 
     public String getCdnUrl() {
         return webUrl + "/static";
+    }
+
+    public String getContextPath() {
+        return contextPath;
     }
 
     public String getVersionSuffix() {
@@ -127,6 +134,7 @@ public class Configuration {
         this.dataDirectory = dataDirectory;
 
         setWebUrl(getConfigurationParameter(URL_PROPERTY, ""));
+        contextPath = getConfigurationParameter(CONTEXT_PATH_PROPERTY, "");
     }
 
     public String getApiKey() {
